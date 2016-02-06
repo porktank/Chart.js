@@ -88,7 +88,7 @@ These are the customisation options specific to Pie & Doughnut charts. These opt
 	animateScale : false,
 	{% raw %}
 	//String - A legend template
-	legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
 	{% endraw %}
 }
 ```
@@ -136,6 +136,8 @@ myDoughnutChart.update();
 #### .addData( segmentData, index )
 
 Calling `addData(segmentData, index)` on your Chart instance passing an object in the same format as in the constructor. There is an optional second argument of 'index', this determines at what index the new segment should be inserted into the chart.
+
+If you don't specify a color and highliht, one will be chosen from the global default array: segmentColorDefault and the corresponding segmentHighlightColorDefault.  The index of the addded data is used to lookup a corresponding color from the defaults.
 
 ```javascript
 // An object in the same format as the original data source
